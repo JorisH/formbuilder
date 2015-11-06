@@ -1,4 +1,6 @@
 .idea
+config/config.php
+config/databases.yml
 log
 cache
 plugins

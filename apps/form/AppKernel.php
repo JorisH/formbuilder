@@ -30,8 +30,8 @@ class AppKernel extends Sf2BridgeContext
   {
     $sf2BridgeBundles = parent::registerBundles();
     
-    return array_merge($sf2BridgeBundles, array(            
-      // Add bundles here as you do in sf2
+    return array_merge($sf2BridgeBundles, array(
+      new \Symfony\Bundle\TwigBundle\TwigBundle()
     ));
   }
   

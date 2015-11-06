@@ -13,5 +13,9 @@ framework:
   templating:
     engines:
       - php
-    
-sf2_bridge:    
+      - twig
+sf2_bridge:
+twig:
+  form_themes: ['bootstrap_3_layout.html.twig']
+  paths:
+    "%kernel.root_dir%/apps/form/modules" : form

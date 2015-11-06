@@ -28,11 +28,17 @@ class formActions extends sfActions
       $builder->add($child->name, $child->type);
     }
 
-    return $builder->getForm()->createView();
+    echo $this->render('form-preview.html.twig', ['form' => $builder->getForm()->createView()]);
+    exit();
   }
 
   public function createFormBuilder($data = null, array $options = array())
   {
     return $this->getContainer()->get('form.factory')->createBuilder('form', $data, $options);
+  }
+
+  private function render($templateName, $params)
+  {
+    return $this->getContainer()->get('twig')->render('@form/form/templates/' . $templateName, $params);
   }
 }

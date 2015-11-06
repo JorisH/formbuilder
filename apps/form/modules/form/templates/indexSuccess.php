@@ -18,6 +18,12 @@
 
 <input id='bla' type="button" value="Save it bitch!"/>
 
+<div id="form-preview" style="width: 100%">
+
+</div>
+
+</div>
+
 <script type='text/javascript'>
   jQuery(function($){
     var options = {};
@@ -27,8 +33,10 @@
     $('#bla').on('click', function(){
       $.post(
         '<?php echo url_for("form/update"); ?>',
-        {data: formBuilder.getJson()}
-
+        {data: formBuilder.getJson()},
+        function(formHtml) {
+          $("#form-preview").html(formHtml);
+        }
       )
     })
 
