@@ -1,8 +1,8 @@
 function FormTypeFactory()
 {
     var map = {
-        TextType: new TextType(),
-        SelectType: new SelectType()
+        text: new TextType(),
+        choice: new SelectType()
     };
 
     return {
@@ -21,7 +21,10 @@ function Type(options)
     var settings = jQuery.extend({
         icon: '',
         name: '',
-        type: ''
+        type: '',
+        editableProperties: function(){
+            return jQuery.extend([{name: 'name', type: 'text'}], options.editableProperties);
+        }
     }, options);
 
     return {
@@ -35,7 +38,8 @@ function Type(options)
                     .on('click', this.clickHandler)
             ;
         },
-        clickHandler: function(){}
+        clickHandler: function(){},
+        editableProperties: settings.editableProperties()
     };
 }
 
@@ -43,14 +47,12 @@ function TextType() {
     return new Type({
         icon: '/images/formgenerator/textfield.png',
         name: 'text',
-        type: 'TextType'
     });
 }
 
 function SelectType() {
     return new Type({
         icon: '/images/formgenerator/dropdown.png',
-        name: 'select',
-        type: 'SelectType'
+        name: 'choice',
     });
 }

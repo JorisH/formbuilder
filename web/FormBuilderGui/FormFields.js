@@ -1,8 +1,8 @@
 function FormFieldFactory()
 {
     var map = {
-        TextType: new TextField(),
-        SelectType: new SelectField()
+        text: new TextField(),
+        choice: new SelectField()
     };
 
     return {
@@ -27,31 +27,29 @@ function Form(options) {
         name : settings.name,
         type : settings.type,
         children : [],
+        value: '',
         getChildren: function() {
             return this.children;
         },
-        render: function() {
-            //Loop all children and render them
-            if(this.getChildren().length > 0) {
-                var tmp = $('<div>');
-                jQuery(this.getChildren()).each(function(key, child) {
-                    tmp.append(child.render());
-                });
-
-                return tmp;
+        find: function(name) {
+            if(this.name === name) {return this;}
+            for(i=0; i < this.children.length; i++) {
+                if(this.children[i].find(name)){return this.children[i];}
             }
+
+            return false;
         }
     };
 }
 
 function TextField () {
     var $_this =  new Form({
-        name: 'new_tex_field',
-        type: 'text'
+        name: 'new_text_field',
+        type: 'text',
     });
 
     $_this.render = function() {
-        return jQuery('<div><label>' + $_this.name + '</label><input type="text"></div>');
+        return jQuery('<div><label>' + $_this.name + '</label><input type="text" value="' + $_this.value + '"></div>');
     };
 
     return $_this;
