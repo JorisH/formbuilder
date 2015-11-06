@@ -1,0 +1,17 @@
+framework:  
+  secret: notsosecret
+  default_locale: nl_BE
+  
+  csrf_protection: false
+#    enabled: false
+  form: true
+  validation: false #is enabled by default by form
+#  translator: { fallback: en_US } # needs some extra component(s) like finder
+  router:
+    resource: "%kernel.root_dir%/config/routing.yml"
+    strict_requirements: %kernel.debug%
+  templating:
+    engines:
+      - php
+    
+sf2_bridge:    
