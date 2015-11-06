@@ -1,0 +1,16 @@
+{
+  "repositories": [
+    { "type": "composer", "url": "http://satis.tactics.be" }
+  ],
+  "require": {  
+    "tactics/formbuilder-gui-bundle" : "dev-master",
+    "tactics/sf2-bridge-bundle": "dev-master"
+  },
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "scripts": {
+    "post-install-cmd": "sf1_web_sync.sh",
+    "post-update-cmd": "sf1_web_sync.sh"
+  }  
+}  
