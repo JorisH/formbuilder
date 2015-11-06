@@ -4,8 +4,7 @@
   ],
   "require": {  
     "tactics/formbuilder-gui-bundle" : "dev-master",
-    "tactics/sf2-bridge-bundle": "dev-master",
-    "twig/twig": "^1.23"
+    "tactics/sf2-bridge-bundle": "dev-master"
   },
   "config": {
     "vendor-dir": "vendor"
